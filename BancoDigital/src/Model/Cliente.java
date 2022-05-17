@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cliente {
 	private String nome;
 	private String senha; 
-	private int cpf;
+	private long cpf;
 	private int idade;
 	private int id;
 	
@@ -92,11 +92,11 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public int getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 

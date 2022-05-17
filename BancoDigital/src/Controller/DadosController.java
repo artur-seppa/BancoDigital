@@ -18,31 +18,31 @@ public class DadosController {
 		for (int i = 0; i < 4; i++) {
 			clienteArray[0] = new Cliente();
 			clienteArray[0].setNome("Artur");
-			clienteArray[0].setSenha("123" + i);
+			clienteArray[0].setSenha("123");
 			clienteArray[0].setCpf(123);
 			clienteArray[0].setIdade(19);
-			clienteArray[0].setId(i);
+			clienteArray[0].setId(0);
 			
 			clienteArray[1] = new Cliente();
 			clienteArray[1].setNome("Tiago");
-			clienteArray[1].setSenha("123" + i);
+			clienteArray[1].setSenha("1234");
 			clienteArray[1].setCpf(1234);
 			clienteArray[1].setIdade(20);
-			clienteArray[1].setId(i);
+			clienteArray[1].setId(1);
 
 			clienteArray[2] = new Cliente();
 			clienteArray[2].setNome("Maria");
-			clienteArray[2].setSenha("123" + i);
+			clienteArray[2].setSenha("12345");
 			clienteArray[2].setCpf(12345);
 			clienteArray[2].setIdade(21);
-			clienteArray[2].setId(i);
+			clienteArray[2].setId(2);
 
 			clienteArray[3] = new Cliente();
 			clienteArray[3].setNome("Ana");
-			clienteArray[3].setSenha("123" + i);
+			clienteArray[3].setSenha("123456");
 			clienteArray[3].setCpf(123456);
 			clienteArray[3].setIdade(22);
-			clienteArray[3].setId(i);
+			clienteArray[3].setId(3);
 			
 			/*==========Enderecos===========*/
 			
@@ -75,7 +75,7 @@ public class DadosController {
 			
 			/*ASSOCIA O ENDERECO AO CLIENTE*/
 			
-			clienteArray[0].setEndereco(enderecoArray[10]);
+			clienteArray[0].setEndereco(enderecoArray[0]);
 			clienteArray[1].setEndereco(enderecoArray[1]);
 			clienteArray[2].setEndereco(enderecoArray[2]);
 			clienteArray[3].setEndereco(enderecoArray[3]);
@@ -89,7 +89,8 @@ public class DadosController {
 	}
 	
 	/*Criando Cliente*/
-	public boolean criandoCliente(String nome, String senha, int cpf, int idade ) {
+	public boolean criandoCliente(String nome, String senha, long cpf, int idade, 
+			String endereco, String estado, String cidade) {
 		
 		clienteArray[cont] = new Cliente();
 		
@@ -98,6 +99,17 @@ public class DadosController {
 		clienteArray[cont].setCpf(cpf);
 		clienteArray[cont].setIdade(idade);
 		clienteArray[cont].setId(cont);
+				
+		enderecoArray[cont] = new Endereco();
+		enderecoArray[cont].setCidade(cidade);
+		enderecoArray[cont].setEstado(estado);
+		enderecoArray[cont].setEndereco(endereco);
+		
+		//ASSOCIA O CLIENTE AO ENDERECO
+		enderecoArray[cont].setCliente(clienteArray[cont]);
+		
+		//ASSOCIA O ENDERECO AO CLIENTE
+		clienteArray[cont].setEndereco(enderecoArray[cont]);
 		
 		cliente.add(clienteArray[cont]);
 		
@@ -127,27 +139,34 @@ public class DadosController {
 		return clientesNames;
 	}
 	
+	/*Detem o arrayList de clientes*/
 	public Cliente[] clientes() {
 		return clienteArray;
 	}
 	
-	/*===========ContaPoupanca============*/
+	/*Login de cliente no sistema*/
+	public boolean loginCliente(String nome, String senha) {
+		for(int i=0; i<cliente.size(); i++) {	
+			System.out.println(senha);
+			if(nome.equals(cliente.get(i).getNome())) {
+				if(senha.equals(cliente.get(i).getSenha())){
+					return true;
+				}
+			}
+		}		
+		return false;		
+	}
 	
-//	/*Criando ContaPoupanca*/
-//	public boolean criandoContaPoupanca(int id, ContaPoupanca conta) {
-//		clienteArray[id].adicionarContaPoupanca(conta);
-//		return true;
-//	}
-//	
-//	/*removendo ContaPoupanca*/
-//	public boolean excluindoContaPoupanca(int id, ContaPoupanca conta) {
-//		clienteArray[id].excluirContaPoupanca(conta);
-//		return true;
-//	}
+	/*Obtem ID de cliente no sistema*/
+	public int ImprimeIDCliente(String nome, String senha) {
+	for(int i=0; i<cliente.size(); i++) {	
+		if(nome.equals(cliente.get(i).getNome())) {
+			if(senha.equals(cliente.get(i).getSenha())){
+				return cliente.get(i).getId();
+			}
+		}
+	}
+	return -1;
 	
-//	/*imprimindo saldo ContaPoupanca*/
-//	public boolean saldoContaPoupanca(int id, ContaPoupanca conta) {
-//		clienteArray[id]
-//		return true;
-//	}
+}
 }
