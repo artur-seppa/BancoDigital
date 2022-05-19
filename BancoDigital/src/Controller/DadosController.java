@@ -139,9 +139,9 @@ public class DadosController {
 		return clientesNames;
 	}
 	
-	/*Detem o arrayList de clientes*/
-	public Cliente[] clientes() {
-		return clienteArray;
+	/*Detem o Cliente com o seu id*/
+	public Cliente imprimeCliente(int id) {
+		return clienteArray[id];
 	}
 	
 	/*Login de cliente no sistema*/
@@ -168,5 +168,15 @@ public class DadosController {
 	}
 	return -1;
 	
-}
+  }
+	
+	/*Obtem Cliente pelo ID*/
+	public Cliente cliente(int id) {
+		return cliente.get(id);
+	}
+	
+	/*Obtem Array de clientes*/
+	public Cliente[] arrayclientes() {
+		return clienteArray;
+	}
 }

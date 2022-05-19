@@ -11,7 +11,7 @@ public class ContaPoupancaController {
 	  private static int cont = 0;
 	
 	  DadosController controller = new DadosController();
-	  Cliente clienteArray[] = controller.clientes();
+	  Cliente clienteArray[] = controller.arrayclientes();
 	  int quantidadeClientes = controller.quantidadeClientes();
 	  
 	  /*Criando ContaPoupanca*/
