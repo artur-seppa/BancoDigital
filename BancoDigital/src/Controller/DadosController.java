@@ -92,6 +92,9 @@ public class DadosController {
 	public boolean criandoCliente(String nome, String senha, long cpf, int idade, 
 			String endereco, String estado, String cidade) {
 		
+		System.out.println("nome " + nome);
+		System.out.println("senha  " + senha);
+		
 		clienteArray[cont] = new Cliente();
 		
 		clienteArray[cont].setNome(nome);
@@ -136,6 +139,11 @@ public class DadosController {
 			clientesNames[i] = cliente.get(i).getNome();
 		}
 		
+		for(int i=0; i<cliente.size(); i++) {	
+			System.out.println(cliente.get(i).getNome());
+			System.out.println(cliente.get(i).getSenha());
+		}
+		
 		return clientesNames;
 	}
 	
@@ -146,7 +154,12 @@ public class DadosController {
 	
 	/*Login de cliente no sistema*/
 	public boolean loginCliente(String nome, String senha) {
+		System.out.println("Nome dentro= " +nome);
+		System.out.println("senha dentro= "+ senha);
+		System.out.println("size dentro= "+ cliente.size());
 		for(int i=0; i<cliente.size(); i++) {	
+			System.out.println("Nome = " +nome.equals(cliente.get(i).getNome()));
+			System.out.println("senha = "+ cliente.get(i).getSenha());
 			if(nome.equals(cliente.get(i).getNome())) {
 				if(senha.equals(cliente.get(i).getSenha())){
 					return true;

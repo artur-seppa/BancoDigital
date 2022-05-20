@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Controller.ContaCorrenteController;
+import Controller.ContaPoupancaController;
 import Controller.DadosController;
 
 public class TelaPrincipalView implements ActionListener{
@@ -36,7 +38,7 @@ public class TelaPrincipalView implements ActionListener{
 	private static JLabel titulo = new JLabel("BSB Bank");
 	private static JPanel panel = new JPanel();
 
-	DadosController controller = new DadosController();
+	private static DadosController controller = new DadosController();
 	
 	public TelaPrincipalView(){		
 		janela.setVisible(true);
@@ -117,6 +119,7 @@ public class TelaPrincipalView implements ActionListener{
 		Object src = e.getSource();
 		
 		if(src == cadastroCliente) {
+			janela.setVisible(false);
 			new CadastroClienteView().imprimirTelaCadastro(controller);
 		}
 		
@@ -143,4 +146,10 @@ public class TelaPrincipalView implements ActionListener{
 	
 	}	
   }
+
+	public void VoltaTelaPrincipalView(DadosController dados) {
+		controller = dados;
+		
+		janela.setVisible(true);
+	}
 }

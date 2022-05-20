@@ -20,6 +20,9 @@ public class SacarCorrenteView implements ActionListener{
 			private static JFrame janela = new JFrame();
 			private static JPanel panelSacar= new JPanel();
 			private static JLabel tituloSacar = new JLabel();
+			private static JLabel text2 = new JLabel("sacar da sua conta :");
+			private static JLabel text = new JLabel("Insira o valor no qual deseja ");
+			private static JLabel text1 = new JLabel(" R$");
 			
 			private static JTextField sacarText = new JTextField(20);
 			
@@ -59,17 +62,14 @@ public class SacarCorrenteView implements ActionListener{
 		SairButton.setBounds(290, 10, 80, 30);
 		panelSacar.add(SairButton);
 		
-		 JLabel text = new JLabel("Insira o valor no qual deseja ");
 		 text.setFont(new Font("Arial", Font.BOLD, 15));
 		 text.setBounds(80, 65, 500, 30);
 		 panelSacar.add(text);
 		 
-		 JLabel text2 = new JLabel("sacar da sua conta :");
 		 text2.setFont(new Font("Arial", Font.BOLD, 15));
 		 text2.setBounds(80, 85, 500, 30);
 		 panelSacar.add(text2);
 		 
-		 JLabel text1 = new JLabel(" R$");
 		 text1.setFont(new Font("Arial", Font.BOLD, 15));
 		 text1.setBounds(90, 135, 360, 30);
 		 panelSacar.add(text1);
@@ -80,7 +80,12 @@ public class SacarCorrenteView implements ActionListener{
 		 
 		SacarButton.setBounds(137, 190, 100, 30);
 		panelSacar.add(SacarButton);
-		 
+		
+		sacarText.setVisible(true);
+		text.setVisible(true);
+		text2.setVisible(true);
+		text1.setVisible(true);
+		
 		 SairButton.addActionListener(objCadastro);
 		 SacarButton.addActionListener(objCadastro);
 	}
@@ -95,6 +100,11 @@ public class SacarCorrenteView implements ActionListener{
 			
 			sacarText.setText("0.00");
 			
+			sacarText.setVisible(false);
+			text.setVisible(false);
+			text2.setVisible(false);
+			text1.setVisible(false);
+			
 			new CorrenteView().imprimirTelaCorrente(controller, IDUsuario, correnteController);
 		}
 		
@@ -105,13 +115,14 @@ public class SacarCorrenteView implements ActionListener{
 			if(saque >= 0.00d){
 				if(correnteController.saldoContaCorrente(IDUsuario) >= saque) {
 					sucesso = correnteController.sacarContaCorrente(IDUsuario, saque);
-					sacarText.setText("0.00");
 					
-					if(sucesso == true) {
-						janela.setVisible(false);
+					sacarText.setVisible(false);
+					text.setVisible(false);
+					text2.setVisible(false);
+					text1.setVisible(false);
+					
+					janela.setVisible(false);
 						
-						sacarText.setText("0.00");
-					}
 				}
 			}
 			

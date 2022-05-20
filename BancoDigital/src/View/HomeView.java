@@ -33,6 +33,7 @@ public class HomeView implements ActionListener{
 	private static JButton perfilButton = new JButton("Perfil");
 	private static JButton poupancaButton = new JButton("Conta Poupança");
 	private static JButton correnteButton = new JButton("Conta Corrente");
+	private static JButton sairButton = new JButton("Sair");
 	
 	private static HomeView objCadastro = new HomeView();
 	private static DadosController controller = new DadosController();
@@ -46,7 +47,7 @@ public class HomeView implements ActionListener{
 		
 		janela.setVisible(true);	
 		
-		janela.setSize(400, 340);
+		janela.setSize(400, 380);
 		panelHome.setLayout(null);
 		janela.add(panelHome);
 		placeComponents(panelHome);
@@ -89,9 +90,13 @@ public class HomeView implements ActionListener{
 		correnteButton.setBounds(100, 200, 200, 40);
 		panelHome.add(correnteButton);
 		
+		sairButton.setBounds(100, 270, 200, 40);
+		panelHome.add(sairButton);
+		
 		perfilButton.addActionListener(objCadastro);
 		poupancaButton.addActionListener(objCadastro);
 		correnteButton.addActionListener(objCadastro);
+		sairButton.addActionListener(objCadastro);
 		
 	}
 	
@@ -109,6 +114,11 @@ public class HomeView implements ActionListener{
 		
 		if(src == correnteButton) {
 			new CorrenteView().imprimirTelaCorrente(controller, IDUsuario, correnteController);
+		}
+		
+		if(src == sairButton) {
+			janela.setVisible(false);
+			new TelaPrincipalView().VoltaTelaPrincipalView(controller);
 		}
 		
 	}

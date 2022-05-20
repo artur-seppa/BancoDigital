@@ -180,11 +180,13 @@ public class CadastroClienteView implements ActionListener{
 						System.out.println(clienteNameAtualizada[i]);
 					}
 					
+					System.out.println("quantidade = " + controller.quantidadeClientes());
+					
 					/*
 					 * fecha a janela quando cadastrar o usuario
 					 */
 					janela.setVisible(false);
-					
+					new TelaPrincipalView().VoltaTelaPrincipalView(controller);
 					
 					/*
 					 * passa o valor null para os inputs ao finalizar a operacao

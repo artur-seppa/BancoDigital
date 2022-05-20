@@ -24,7 +24,7 @@ public class TransferirPoupancaView implements ActionListener{
 	private static JTextField NameText = new JTextField(20);
 	
 	private static JButton SairButton = new JButton("Voltar");
-	private static JButton TransferirButton = new JButton("Sacar");
+	private static JButton TransferirButton = new JButton("Transferir");
 	
 	private static TransferirPoupancaView objCadastro = new TransferirPoupancaView();
 	private static DadosController controller = new DadosController();
@@ -109,17 +109,16 @@ public class TransferirPoupancaView implements ActionListener{
 			
 			if( saque >= 0.00d && !NameText.getText().isEmpty() ){
 				if(poupancaController.saldoContaPoupanca(IDUsuario) >= saque) {
-				    sucesso = poupancaController.transferirContaPoupanca(IDUsuario,
+				    poupancaController.transferirContaPoupanca(IDUsuario,
 					NameText.getText(), saque);
-				
-				}
-				
-				if(sucesso == true) {
-					janela.setVisible(false);
+				    
+				    janela.setVisible(false);
+					
 					
 					transferirText.setText("0.00");
 					NameText.setText("");
 				}
+				
 			}
 			
 		}

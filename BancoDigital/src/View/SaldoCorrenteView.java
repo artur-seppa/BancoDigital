@@ -20,6 +20,8 @@ public class SaldoCorrenteView implements ActionListener{
 	private static JFrame janela = new JFrame();
 	private static JPanel panelSaldo = new JPanel();
 	private static JLabel tituloSaldo = new JLabel();
+	private static JLabel text = new JLabel(" Seu saldo na conta é de :");
+	private static JLabel text1 = new JLabel(" R$");
 	
 	private static JTextField saldoText = new JTextField(20);
 	
@@ -52,12 +54,10 @@ public class SaldoCorrenteView implements ActionListener{
 		SairButton.setBounds(290, 10, 80, 30);
 		panelSaldo.add(SairButton);
 		
-		 JLabel text = new JLabel(" Seu saldo na conta é de :");
 		 text.setFont(new Font("Arial", Font.BOLD, 15));
 		 text.setBounds(40, 65, 380, 30);
 		 panelSaldo.add(text);
 		 
-		 JLabel text1 = new JLabel(" R$");
 		 text1.setFont(new Font("Arial", Font.BOLD, 15));
 		 text1.setBounds(40, 105, 360, 30);
 		 panelSaldo.add(text1);
@@ -65,6 +65,10 @@ public class SaldoCorrenteView implements ActionListener{
 		 saldoText.setText(Double.toString(correnteController.saldoContaCorrente(IDUsuario)) );
 		 saldoText.setBounds(70, 105, 140, 30);
 		 panelSaldo.add(saldoText);
+		 
+		 saldoText.setVisible(true);
+		 text.setVisible(true);
+		 text1.setVisible(true);
 		 
 		 SairButton.addActionListener(objCadastro);
 	}
@@ -76,8 +80,10 @@ public class SaldoCorrenteView implements ActionListener{
 		if(src == SairButton) {
 			janela.setVisible(false);
 			
-			saldoText.setText(Double.toString(correnteController.saldoContaCorrente(IDUsuario)) );
-			
+			saldoText.setVisible(false);
+			text.setVisible(false);
+			text1.setVisible(false);
+						
 			new CorrenteView().imprimirTelaCorrente(controller, IDUsuario, correnteController);
 		}
 	}

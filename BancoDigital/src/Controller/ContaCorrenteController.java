@@ -10,9 +10,15 @@ public class ContaCorrenteController {
 	  private ContaCorrente ContaCorrenteArray[] = new ContaCorrente[100];
 	  private static int cont = 0;
 	
-	  DadosController controller = new DadosController();
-	  Cliente clienteArray[] = controller.arrayclientes();
-	  int quantidadeClientes = controller.quantidadeClientes();
+	  private static DadosController controller = new DadosController();
+	  private static Cliente clienteArray[] = controller.arrayclientes();
+	 private static int quantidadeClientes = controller.quantidadeClientes();
+	  
+	  public void obtemController (DadosController dados) {
+		  controller = dados;
+		  clienteArray = controller.arrayclientes();
+		  quantidadeClientes = controller.quantidadeClientes();
+	  }
 	  
 	  /*Criando ContaCorrente*/
 		public boolean criandoContaCorrente(int id, Double saldo) {
@@ -29,10 +35,14 @@ public class ContaCorrenteController {
 		}
 		
 		/*removendo ContaCorrente*/
-		public boolean excluindoContaCorrente(int id) {
-			clienteArray[id].excluirContaCorrente(clienteArray[id].getContaCorrente());
+		public boolean excluindoContaCorrente(int id, int cont) {
+			if(cont == 0){
+				clienteArray[id].excluirContaCorrente(clienteArray[id].getContaCorrente());
+				
+				return true;
+			}
 			
-			return true;
+			return false;
 		}
 		
 		/*depositar ContaCorrente*/

@@ -10,9 +10,16 @@ public class ContaPoupancaController {
 	  private ContaPoupanca ContaPoupancaArray[] = new ContaPoupanca[100];
 	  private static int cont = 0;
 	
-	  DadosController controller = new DadosController();
-	  Cliente clienteArray[] = controller.arrayclientes();
-	  int quantidadeClientes = controller.quantidadeClientes();
+	  private static DadosController controller = new DadosController();
+	  private static Cliente clienteArray[] = controller.arrayclientes();
+	  private static int quantidadeClientes = controller.quantidadeClientes();
+	  
+	  public void obtemController (DadosController dados) {
+		  controller = dados;
+		  clienteArray = controller.arrayclientes();
+		  quantidadeClientes = controller.quantidadeClientes();
+		  System.out.println("quantidade cliente = "+quantidadeClientes);
+	  }
 	  
 	  /*Criando ContaPoupanca*/
 		public boolean criandoContaPoupanca(int id, Double saldo) {
@@ -30,9 +37,13 @@ public class ContaPoupancaController {
 		
 		/*removendo ContaPoupanca*/
 		public boolean excluindoContaPoupanca(int id) {
-			clienteArray[id].excluirContaPoupanca(clienteArray[id].getContaPoupanca());
+			if(cont == 0){
+				clienteArray[id].excluirContaPoupanca(clienteArray[id].getContaPoupanca());
+				
+				return true;
+			}
 			
-			return true;
+			return false;
 		}
 		
 		/*depositar ContaPoupanca*/
@@ -58,6 +69,7 @@ public class ContaPoupancaController {
 			for(int i=0; i<quantidadeClientes; i++) {
 				
 				if(clienteArray[i].getNome().equals(titular)) {
+					System.out.println("quantidade de contas na transferencia "+ clienteArray[i].quantidadeContasPoupanca());
 					if(clienteArray[i].quantidadeContasPoupanca() == 1){
 						Double saldo = clienteArray[id].getContaPoupanca().getSaldo();
 						saldo = saldo - transferencia;
