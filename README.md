@@ -5,7 +5,7 @@
  </p>
  
  <p>
-  A aplicação permite o usuario exercer o cadastro de uma nova conta no sistema, criar uma conta poupança e um conta corrente, além de poder realizar o delete, read e uptade da sua conta perfil cadastrada, assim como das suas contas correntes e poupanças associadas.
+  A aplicação permite o usuário exercer o cadastro de uma nova conta no sistema, criar uma conta poupança e um conta corrente, além de poder realizar o delete, read e uptade da sua conta perfil cadastrada, assim como das suas contas correntes e poupanças associadas.
 </p>
 
 <p>
