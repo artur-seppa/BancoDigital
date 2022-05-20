@@ -9,17 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.ContaCorrenteController;
 import Controller.ContaPoupancaController;
 import Controller.DadosController;
 import Model.Cliente;
 
-public class PoupancaView implements ActionListener{
+public class CorrenteView implements ActionListener{
 
 	private static JFrame janela = new JFrame();
-	private static JPanel panelPoupanca = new JPanel();
-	private static JLabel tituloPoupanca = new JLabel();
+	private static JPanel panelCorrente = new JPanel();
+	private static JLabel tituloCorrente = new JLabel();
 	
-	private static JLabel text = new JLabel("Você não possui nenhuma conta poupança,");
+	private static JLabel text = new JLabel("Você não possui nenhuma conta corrente,");
 	private static JLabel text1 = new JLabel("deseja criar uma conta agora ? ");
 	
 	private static JButton SairButton = new JButton("Sair");
@@ -30,34 +31,34 @@ public class PoupancaView implements ActionListener{
 	private static JButton transferirButton = new JButton("Transferir");
 	private static JButton depositarButton = new JButton("Depositar");
 	
-	private static PoupancaView objCadastro = new PoupancaView();
+	private static CorrenteView objCadastro = new CorrenteView();
 	private static DadosController controller = new DadosController();
-	private static ContaPoupancaController poupancaController = new ContaPoupancaController();
+	private static ContaCorrenteController correnteController = new ContaCorrenteController();
 	private static Cliente cliente = new Cliente();
 	private static int IDUsuario;
 	
-	public void imprimirTelaPoupanca(DadosController dados, int id, ContaPoupancaController poupanca) {
+	public void imprimirTelaCorrente(DadosController dados, int id, ContaCorrenteController corrente) {
 		controller = dados;
 		IDUsuario = id;
-		poupancaController = poupanca;
+		correnteController = corrente;
 		
 		janela.setVisible(true);	
 		
 		janela.setSize(400, 450);
-		panelPoupanca.setLayout(null);
-		janela.add(panelPoupanca);
-		placeComponents(panelPoupanca);
+		panelCorrente.setLayout(null);
+		janela.add(panelCorrente);
+		placeComponents(panelCorrente);
 		
 		cliente = controller.cliente(IDUsuario);
 	}
 
 	private void placeComponents(JPanel panelPoupanca) {
-		if(poupancaController.quantidadeContaPoupanca(IDUsuario) == 0) {
+		if(correnteController.quantidadeContaCorrente(IDUsuario) == 0) {
 			
-			tituloPoupanca.setText("Conta Poupanca");
-			tituloPoupanca.setFont(new Font("Arial", Font.BOLD, 20));
-			tituloPoupanca.setBounds(20, 10, 250, 30);		
-			panelPoupanca.add(tituloPoupanca);
+			tituloCorrente.setText("Conta Corrente");
+			tituloCorrente.setFont(new Font("Arial", Font.BOLD, 20));
+			tituloCorrente.setBounds(20, 10, 250, 30);		
+			panelPoupanca.add(tituloCorrente);
 			
 			SairButton.setBounds(290, 10, 80, 30);
 			panelPoupanca.add(SairButton);
@@ -76,11 +77,11 @@ public class PoupancaView implements ActionListener{
 			SairButton.addActionListener(objCadastro);
 			CriarContaButton.addActionListener(objCadastro);
 			
-		} if(poupancaController.quantidadeContaPoupanca(IDUsuario) != 0){
-			tituloPoupanca.setText("Conta Poupanca");
-			tituloPoupanca.setFont(new Font("Arial", Font.BOLD, 20));
-			tituloPoupanca.setBounds(20, 10, 250, 30);		
-			panelPoupanca.add(tituloPoupanca);
+		} if(correnteController.quantidadeContaCorrente(IDUsuario) != 0){
+			tituloCorrente.setText("Conta Corrente");
+			tituloCorrente.setFont(new Font("Arial", Font.BOLD, 20));
+			tituloCorrente.setBounds(20, 10, 250, 30);		
+			panelPoupanca.add(tituloCorrente);
 			
 			SairButton.setBounds(290, 10, 80, 30);
 			panelPoupanca.add(SairButton);
@@ -112,7 +113,7 @@ public class PoupancaView implements ActionListener{
 		if(src == CriarContaButton) {
 			janela.setVisible(false);
 			
-			poupancaController.criandoContaPoupanca(IDUsuario, 0d);
+			correnteController.criandoContaCorrente(IDUsuario, 0d);
 			
 			text.setVisible(false);
 			text1.setVisible(false);
@@ -129,19 +130,19 @@ public class PoupancaView implements ActionListener{
 		}
 		
 		if(src == SaldoButton) {
-			new SaldoPoupancaView().imprimirTelaSaldo(controller, IDUsuario, poupancaController);
+			new SaldoCorrenteView().imprimirTelaSaldoCorrente(controller, IDUsuario, correnteController);
 		}
 		
 		if (src == SacarButton) {
-			new SacarPoupancaView().imprimirTelaSacar(controller, IDUsuario, poupancaController);
+			new SacarCorrenteView().imprimirTelaSacarCorrente(controller, IDUsuario, correnteController);
 		}
 
 		if (src == transferirButton) {
-			new TransferirPoupancaView().imprimirTelaTransferir(controller, IDUsuario, poupancaController);
+			new TransferirCorrenteView().imprimirTelaTransferirCorrente(controller, IDUsuario, correnteController);
 		}
 
 		if (src == depositarButton) {
-			new DepositarPoupancaView().imprimirTelaDepositar(controller, IDUsuario, poupancaController);
+			new DepositarCorrenteView().imprimirTelaDepositarCorrente(controller, IDUsuario, correnteController);
 		}
 		
 	}

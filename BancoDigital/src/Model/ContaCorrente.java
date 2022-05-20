@@ -1,6 +1,6 @@
 package Model;
 
-public class ContaCorrente {
+public class ContaCorrente extends Conta{
 	private Cliente cliente;
 	
 	public Cliente getCliente() {

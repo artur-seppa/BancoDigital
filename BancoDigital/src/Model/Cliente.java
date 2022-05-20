@@ -67,6 +67,10 @@ public class Cliente {
 		return contaPoupanca.get(0);
 	}
 	
+	public ContaCorrente getContaCorrente() {
+		return contaCorrente.get(0);
+	}
+	
 
 	public int getId() {
 		return id;

@@ -147,7 +147,6 @@ public class DadosController {
 	/*Login de cliente no sistema*/
 	public boolean loginCliente(String nome, String senha) {
 		for(int i=0; i<cliente.size(); i++) {	
-			System.out.println(senha);
 			if(nome.equals(cliente.get(i).getNome())) {
 				if(senha.equals(cliente.get(i).getSenha())){
 					return true;

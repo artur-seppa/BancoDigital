@@ -14,7 +14,7 @@ import Controller.ContaPoupancaController;
 import Controller.DadosController;
 import Model.Cliente;
 
-public class SaldoView implements ActionListener{
+public class SaldoPoupancaView implements ActionListener{
 
 	private static JFrame janela = new JFrame();
 	private static JPanel panelSaldo = new JPanel();
@@ -24,7 +24,7 @@ public class SaldoView implements ActionListener{
 	
 	private static JButton SairButton = new JButton("Voltar");
 	
-	private static SaldoView objCadastro = new SaldoView();
+	private static SaldoPoupancaView objCadastro = new SaldoPoupancaView();
 	private static DadosController controller = new DadosController();
 	private static ContaPoupancaController poupancaController = new ContaPoupancaController();
 	private static int IDUsuario;
@@ -43,7 +43,7 @@ public class SaldoView implements ActionListener{
 	}
 
 	private void placeComponents(JPanel panelSaldo) {
-		tituloSaldo.setText("Saldo");
+		tituloSaldo.setText("Saldo Poupança");
 		tituloSaldo.setFont(new Font("Arial", Font.BOLD, 20));
 		tituloSaldo.setBounds(20, 10, 250, 30);		
 		panelSaldo.add(tituloSaldo);
@@ -53,16 +53,16 @@ public class SaldoView implements ActionListener{
 		
 		 JLabel text = new JLabel(" Seu saldo na conta é de :");
 		 text.setFont(new Font("Arial", Font.BOLD, 15));
-		 text.setBounds(30, 65, 380, 30);
+		 text.setBounds(40, 65, 380, 30);
 		 panelSaldo.add(text);
 		 
 		 JLabel text1 = new JLabel(" R$");
 		 text1.setFont(new Font("Arial", Font.BOLD, 15));
-		 text1.setBounds(30, 105, 360, 30);
+		 text1.setBounds(40, 105, 360, 30);
 		 panelSaldo.add(text1);
 		 
 		 saldoText.setText(Double.toString(poupancaController.saldoContaPoupanca(IDUsuario)) );
-		 saldoText.setBounds(60, 105, 140, 30);
+		 saldoText.setBounds(70, 105, 140, 30);
 		 panelSaldo.add(saldoText);
 		 
 		 SairButton.addActionListener(objCadastro);

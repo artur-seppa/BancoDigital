@@ -35,9 +35,12 @@ public class ContaPoupancaController {
 			return true;
 		}
 		
-		/*acrescentar ContaPoupanca*/
-		public boolean colocarContaPoupanca(int id, Double montante) {
-			clienteArray[id].getContaPoupanca().setSaldo(montante);
+		/*depositar ContaPoupanca*/
+		public boolean depositarContaPoupanca(int id, Double montante) {
+			Double total = clienteArray[id].getContaPoupanca().getSaldo();
+			total = total + montante;
+			
+			clienteArray[id].getContaPoupanca().setSaldo(total);
 			return true;
 		}
 		
@@ -55,16 +58,17 @@ public class ContaPoupancaController {
 			for(int i=0; i<quantidadeClientes; i++) {
 				
 				if(clienteArray[i].getNome().equals(titular)) {
-					
-					Double saldo = clienteArray[id].getContaPoupanca().getSaldo();
-					saldo = saldo - transferencia;
-					
-					clienteArray[id].getContaPoupanca().setSaldo(saldo);
-					
-					//transfere o valor para o titular
-					Double total = clienteArray[i].getContaPoupanca().getSaldo();
-					clienteArray[i].getContaPoupanca().setSaldo(total+transferencia);
-					return true;
+					if(clienteArray[i].quantidadeContasPoupanca() == 1){
+						Double saldo = clienteArray[id].getContaPoupanca().getSaldo();
+						saldo = saldo - transferencia;
+						
+						clienteArray[id].getContaPoupanca().setSaldo(saldo);
+						
+						//transfere o valor para o titular
+						Double total = clienteArray[i].getContaPoupanca().getSaldo();
+						clienteArray[i].getContaPoupanca().setSaldo(total+transferencia);
+						return true;
+					}
 				}				
 			}
 			

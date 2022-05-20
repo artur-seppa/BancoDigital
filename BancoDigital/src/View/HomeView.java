@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Controller.ContaCorrenteController;
 import Controller.ContaPoupancaController;
 import Controller.DadosController;
 
@@ -36,6 +37,7 @@ public class HomeView implements ActionListener{
 	private static HomeView objCadastro = new HomeView();
 	private static DadosController controller = new DadosController();
 	private static ContaPoupancaController poupancaController = new ContaPoupancaController();
+	private static ContaCorrenteController correnteController = new ContaCorrenteController();
 	private static int IDUsuario;
 	
 	public void imprimirTelaHome(DadosController dados, int IDCliente) {
@@ -89,6 +91,7 @@ public class HomeView implements ActionListener{
 		
 		perfilButton.addActionListener(objCadastro);
 		poupancaButton.addActionListener(objCadastro);
+		correnteButton.addActionListener(objCadastro);
 		
 	}
 	
@@ -103,6 +106,11 @@ public class HomeView implements ActionListener{
 		if(src == poupancaButton) {
 			new PoupancaView().imprimirTelaPoupanca(controller, IDUsuario, poupancaController);
 		}
+		
+		if(src == correnteButton) {
+			new CorrenteView().imprimirTelaCorrente(controller, IDUsuario, correnteController);
+		}
+		
 	}
 		
 }
